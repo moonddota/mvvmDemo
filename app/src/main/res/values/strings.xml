@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MVVMDemo</string>
+
+
+
+
+    <string name="not_registered_device">设备:[%1$s]\n还没有注册,请先注册!</string>
+
+</resources>
