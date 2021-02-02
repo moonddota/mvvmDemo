@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:pv="http://schemas.android.com/apk/res-auto"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdas"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <me.wangyuwei.particleview.ParticleView
+        android:id="@+id/particleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/teal_200"
+        pv:pv_background_color="@color/teal_700"
+        pv:pv_host_text="WanAndroid"
+        pv:pv_host_text_size="20sp"
+        pv:pv_particle_text="kotlin-mvvm-jetpack"
+        pv:pv_particle_text_size="15sp"
+        pv:pv_spread_anim_time="1500"
+        pv:pv_text_color="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
