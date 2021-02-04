@@ -6,14 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/table_home"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.mvvmdemo.widget.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/table_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.example.mvvmdemo.widget.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/main_tab1_active"
+            app:bt_colorInactive="@color/main_tab1_inactive"
+            app:bt_icon="@mipmap/ic_tab1"
+            app:bt_shape="@drawable/transition_background_drawable_home"
+            app:bt_title="@string/tab1" />
+
+        <com.example.mvvmdemo.widget.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/main_tab2_active"
+            app:bt_colorInactive="@color/main_tab2_inactive"
+            app:bt_icon="@mipmap/ic_tab2"
+            app:bt_shape="@drawable/transition_background_drawable_search"
+            app:bt_title="@string/tab2" />
+
+        <com.example.mvvmdemo.widget.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_profile_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/main_tab3_active"
+            app:bt_colorInactive="@color/main_tab3_inactive"
+            app:bt_icon="@mipmap/ic_tab3"
+            app:bt_shape="@drawable/transition_background_drawable_like"
+            app:bt_title="@string/tab3" />
+
+        <com.example.mvvmdemo.widget.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/main_tab4_active"
+            app:bt_colorInactive="@color/main_tab4_inactive"
+            app:bt_icon="@mipmap/ic_tab4"
+            app:bt_shape="@drawable/transition_background_drawable_list"
+            app:bt_title="@string/tab4" />
+
+        <com.example.mvvmdemo.widget.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/main_tab5_active"
+            app:bt_colorInactive="@color/main_tab5_inactive"
+            app:bt_icon="@mipmap/ic_tab5"
+            app:bt_shape="@drawable/transition_background_drawable_person"
+            app:bt_title="@string/tab5" />
+    </com.example.mvvmdemo.widget.bubblenavigation.BubbleNavigationConstraintView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

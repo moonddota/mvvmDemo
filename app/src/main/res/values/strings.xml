@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">mvvmDemo</string>
+
+
+    <string name="tab1">首页</string>
+    <string name="tab2">项目</string>
+    <string name="tab5">我的</string>
+    <string name="tab4">公众号</string>
+    <string name="tab3">广场</string>
+
 </resources>

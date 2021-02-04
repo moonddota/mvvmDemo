@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.blankj.utilcode.util.LogUtils
 import com.dylanc.viewbinding.inflateBindingWithGeneric
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.loadsir.EmptyCallback
@@ -71,7 +72,9 @@ abstract class BaseFragment<vb : ViewBinding> : Fragment(), INetView {
 
     override fun showLoading(view: View?) {
         if (loadService == null) {
-            loadService = LoadSir.getDefault().register(view) { v: View? -> onRetryBtnClick() }
+            loadService = LoadSir.getDefault().register(view) { // 重新加载逻辑
+                LogUtils.e("重新加载逻辑")
+            }
         }
         loadService!!.showCallback(LoadingCallback::class.java)
     }

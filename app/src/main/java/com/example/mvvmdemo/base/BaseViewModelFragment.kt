@@ -22,13 +22,13 @@ abstract class BaseViewModelFragment<VM : BaseViewModel, VB : ViewBinding> : Bas
     }
 
     private fun initVM() {
-        providerVMClass()?.let {
+        providerVMClass().let {
             viewModel = ViewModelProvider(this@BaseViewModelFragment).get(it)
             lifecycle.addObserver(viewModel)
         }
     }
 
-    open fun providerVMClass(): Class<VM>? = null
+    abstract fun providerVMClass(): Class<VM>
 
     open fun startObserve() {
         //处理一些通用异常，比如网络超时等
