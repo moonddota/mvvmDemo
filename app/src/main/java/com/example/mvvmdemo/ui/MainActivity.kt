@@ -9,20 +9,21 @@ import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.ActivityMainBinding
 import com.example.mvvmdemo.dialog.MainDialog
 import com.example.mvvmdemo.util.toast
-import com.permissionx.guolindev.PermissionX
+  import com.permissionx.guolindev.PermissionX
 
 
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
 class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>() {
 
-    private val dialog by lazy { MainDialog() }
-
+    private val dialog by lazy { MainDialog(supportFragmentManager,"MainActivity") }
+    private var num  = 0
 
     override fun providerVMClass(): Class<MainViewModel> = MainViewModel::class.java
 
     override fun initView() {
         binding.tv.setOnClickListener {
-            dialog.show(supportFragmentManager, "MainActivity")
+            num++
+            dialog.shwoDialog(num)
         }
     }
 
@@ -37,10 +38,10 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
                 Manifest.permission.CALL_PHONE
             )
             .explainReasonBeforeRequest()
-            .onExplainRequestReason { scope, deniedList,beforeRequest  ->
+            .onExplainRequestReason { scope, deniedList, beforeRequest ->
                 if (beforeRequest) {
                     scope.showRequestReasonDialog(deniedList, "为了保证程序正常工作，请您同意以下权限申请", "我已明白")
-                }else{
+                } else {
                     scope.showRequestReasonDialog(
                         deniedList,
                         "核心基础基于这些权限",

@@ -4,10 +4,7 @@ import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
+import android.view.*
 import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
@@ -42,6 +39,7 @@ abstract class BaseDialogFragment<vb : ViewBinding> : DialogFragment() {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
+            setStyle(STYLE_NO_FRAME, R.style.Base_AlertDialog)
         }
     }
 
@@ -59,11 +57,8 @@ abstract class BaseDialogFragment<vb : ViewBinding> : DialogFragment() {
         initView()
     }
 
-    /**
-     * 初始化界面
-     */
+    abstract fun initWindow():Triple<Boolean,Int,Int>
     abstract fun initView()
-    abstract fun setCanceled(): Boolean
 
     override fun show(fm: FragmentManager, tag: String?) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
@@ -72,7 +67,7 @@ abstract class BaseDialogFragment<vb : ViewBinding> : DialogFragment() {
         }
         fm.beginTransaction().remove(this).commit();
         super.show(fm, tag)
-    }
+     }
 
     /**
      * 全屏显示Dialog
@@ -81,11 +76,19 @@ abstract class BaseDialogFragment<vb : ViewBinding> : DialogFragment() {
      * @return
      */
     override fun onCreateDialog(@Nullable savedInstanceState: Bundle?): Dialog {
-        val dialog = Dialog(requireActivity())
+        val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setBackgroundDrawableResource(R.color.white)
-        dialog.setCanceledOnTouchOutside(setCanceled())
-        dialog.setCancelable(setCanceled())
+
+        val initWindow = initWindow()
+        dialog.setCanceledOnTouchOutside(initWindow.first)
+        dialog.setCancelable(initWindow.first)
+        val window = dialog.window!!
+        val lp = window.attributes
+        lp.dimAmount = 0.3f
+        lp.gravity = initWindow.second
+        lp.windowAnimations = initWindow.third
+        window.attributes = lp
         return dialog
     }
 }

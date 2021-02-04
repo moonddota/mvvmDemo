@@ -6,16 +6,23 @@
     android:background="@color/white">
 
     <TextView
-        android:padding="30dp"
-        android:background="@color/white"
         android:id="@+id/tv"
-        android:textColor="@color/black"
-        android:text="xxxxxxx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/main_text"
+        android:padding="30dp"
+        android:text="xxxxxxx"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
