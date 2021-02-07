@@ -13,5 +13,14 @@ class RouterActivityPath {
     }
 
 
+    /**
+     * web 组件
+     */
+    object Web {
+        const val WEB = "/module_web"
+        const val PAGER_WEB = WEB + "/Web"
+    }
+
+
 
 }

@@ -33,7 +33,7 @@ abstract class BaseViewModelFragment<VM : BaseViewModel, VB : ViewBinding> : Bas
     open fun startObserve() {
         //处理一些通用异常，比如网络超时等
         viewModel.run {
-            getError().observe(viewLifecycleOwner, Observer {
+            getError().observe(viewLifecycleOwner, {
                 requestError(it)
             })
         }

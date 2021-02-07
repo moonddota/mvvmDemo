@@ -35,9 +35,10 @@ abstract class BaseDialogFragment<vb : ViewBinding> : DialogFragment() {
         if (dialog != null) {
             val dm = DisplayMetrics()
             requireActivity().windowManager.defaultDisplay.getMetrics(dm)
+           val layout = initLayout()
             dialog!!.window!!.setLayout(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
+                layout.first,
+                layout.second
             )
             setStyle(STYLE_NO_FRAME, R.style.Base_AlertDialog)
         }
@@ -58,6 +59,7 @@ abstract class BaseDialogFragment<vb : ViewBinding> : DialogFragment() {
     }
 
     abstract fun initWindow():Triple<Boolean,Int,Int>
+    abstract fun initLayout():Pair<Int,Int>
     abstract fun initView()
 
     override fun show(fm: FragmentManager, tag: String?) {

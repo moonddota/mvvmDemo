@@ -1,26 +1,25 @@
 package com.example.mvvmdemo.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.blankj.utilcode.util.LogUtils
+import com.classic.common.MultipleStatusView
+import com.classic.common.MultipleStatusView.OnViewStatusChangeListener
 import com.dylanc.viewbinding.inflateBindingWithGeneric
 import com.example.mvvmdemo.R
-import com.example.mvvmdemo.base.loadsir.EmptyCallback
-import com.example.mvvmdemo.base.loadsir.LoadingCallback
+import com.example.mvvmdemo.util.toast
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
-import com.kingja.loadsir.core.LoadService
-import com.kingja.loadsir.core.LoadSir
 
-abstract class BaseFragment<vb : ViewBinding> : Fragment(), INetView {
+abstract class BaseFragment<vb : ViewBinding> : Fragment() {
+    private val DELAY = 2000L
+
     private var _binding: vb? = null
     val binding: vb get() = _binding!!
-
-    private var loadService: LoadService<*>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +33,7 @@ abstract class BaseFragment<vb : ViewBinding> : Fragment(), INetView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initImmersionBar()
-
-        initView()
+         initView()
         initData()
     }
 
@@ -61,41 +59,6 @@ abstract class BaseFragment<vb : ViewBinding> : Fragment(), INetView {
                 .hideBar(BarHide.FLAG_HIDE_NAVIGATION_BAR)
                 .init()
         }
-    }
-
-    override fun showLoading() {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(this) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showCallback(LoadingCallback::class.java)
-    }
-
-    override fun showLoading(view: View?) {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(view) { // 重新加载逻辑
-                LogUtils.e("重新加载逻辑")
-            }
-        }
-        loadService!!.showCallback(LoadingCallback::class.java)
-    }
-
-    override fun showSuccess() {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(this) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showSuccess()
-
-    }
-
-    override fun showEmpty() {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(this) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showCallback(EmptyCallback::class.java)
-    }
-
-    override fun onRetryBtnClick() {
-
     }
 
 }

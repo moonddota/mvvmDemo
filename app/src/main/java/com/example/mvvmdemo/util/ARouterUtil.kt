@@ -10,5 +10,11 @@ object ARouterUtil {
             .navigation()
     }
 
+    fun jumpWeb(webUrl: String) {
+        ARouter.getInstance().build(RouterActivityPath.Web.PAGER_WEB).withString("webUrl", webUrl)
+            .navigation()
+
+    }
+
 
 }

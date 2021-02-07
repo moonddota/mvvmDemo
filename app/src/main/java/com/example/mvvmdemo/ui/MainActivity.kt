@@ -5,7 +5,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -23,10 +25,21 @@ import com.permissionx.guolindev.PermissionX
 class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>(),
     BubbleNavigationChangeListener {
 
+    private val mFragments by lazy {
+        listOf(
+            HomeFg(),
+            HomeFg(),
+            HomeFg(),
+            HomeFg(),
+            HomeFg()
+        )
+    };
+
+
     override fun providerVMClass(): Class<MainViewModel> = MainViewModel::class.java
 
     override fun initView() {
-          initPager()
+        initPager()
     }
 
     @SuppressLint("MissingPermission")
@@ -38,7 +51,8 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
                 Manifest.permission.CALL_PHONE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.INTERNET
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_NETWORK_STATE
             )
             .explainReasonBeforeRequest()
             .onExplainRequestReason { scope, deniedList, beforeRequest ->
@@ -65,7 +79,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
             }
     }
 
-    private fun initPager(){
+    private fun initPager() {
         binding.tableHome.setBadgeValue(0, null)
         binding.tableHome.setBadgeValue(1, null) //invisible badge
         binding.tableHome.setBadgeValue(2, null)
@@ -73,19 +87,13 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
         binding.tableHome.setBadgeValue(4, null) //empty badge
         binding.tableHome.setNavigationChangeListener(this)
 
-        binding.pager.isUserInputEnabled = false  //关闭华东
+        binding.pager.isUserInputEnabled = false  //关闭滑动
+        binding.pager.offscreenPageLimit  = mFragments.size
         binding.pager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount() = 5
+            override fun getItemCount() = mFragments.size
 
             override fun createFragment(position: Int): Fragment {
-                return when (position) {
-                    0 -> HomeFg()
-                    1 -> HomeFg()
-                    2 -> HomeFg()
-                    3 -> HomeFg()
-                    4 -> HomeFg()
-                    else -> HomeFg()
-                }
+                return mFragments[position]
             }
         }
         binding.pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

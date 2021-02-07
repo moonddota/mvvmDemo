@@ -13,18 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.dylanc.viewbinding.inflateBindingWithGeneric
 import com.example.mvvmdemo.R
-import com.example.mvvmdemo.base.loadsir.EmptyCallback
-import com.example.mvvmdemo.base.loadsir.LoadingCallback
 import com.example.mvvmdemo.widget.slideback.SlideBack
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
-import com.kingja.loadsir.core.LoadService
-import com.kingja.loadsir.core.LoadSir
 
-abstract class BaseActivity<vb : ViewBinding> : AppCompatActivity(), INetView {
+abstract class BaseActivity<vb : ViewBinding> : AppCompatActivity() {
     lateinit var binding: vb
-
-    private var loadService: LoadService<*>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,39 +78,6 @@ abstract class BaseActivity<vb : ViewBinding> : AppCompatActivity(), INetView {
             //xxxx为你原来给低版本设置的Type
             mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
         }
-    }
-
-    override fun showLoading() {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(this) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showCallback(LoadingCallback::class.java)
-    }
-
-    override fun showLoading(view: View?) {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(view) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showCallback(LoadingCallback::class.java)
-    }
-
-    override fun showSuccess() {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(this) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showSuccess()
-
-    }
-
-    override fun showEmpty() {
-        if (loadService == null) {
-            loadService = LoadSir.getDefault().register(this) { v: View? -> onRetryBtnClick() }
-        }
-        loadService!!.showCallback(EmptyCallback::class.java)
-    }
-
-    override fun onRetryBtnClick() {
-
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {

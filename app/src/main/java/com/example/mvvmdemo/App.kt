@@ -3,11 +3,7 @@ package com.example.mvvmdemo
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
-import com.example.mvvmdemo.base.loadsir.EmptyCallback
-import com.example.mvvmdemo.base.loadsir.ErrorCallback
-import com.example.mvvmdemo.base.loadsir.LoadingCallback
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.kingja.loadsir.core.LoadSir
 import kotlin.properties.Delegates
 
 
@@ -22,12 +18,6 @@ class App : Application() {
         Utils.init(this)
         LiveEventBus.config()
         initArouter()
-        LoadSir.beginBuilder()
-            .addCallback(ErrorCallback()) //添加各种状态页
-            .addCallback(EmptyCallback())
-            .addCallback(LoadingCallback())
-            .setDefaultCallback(LoadingCallback::class.java) //设置默认状态页
-            .commit()
     }
 
     /**
