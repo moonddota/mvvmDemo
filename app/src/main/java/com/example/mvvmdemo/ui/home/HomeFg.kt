@@ -35,9 +35,7 @@ class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
     private val mAdapter by lazy { HomeAdapter() }
     private lateinit var bannerAdapter: BaseQuickAdapter<BannerRes, BaseViewHolder>
 
-    override fun immersionBar(): Boolean {
-        return true
-    }
+    override fun immersionBar(): Boolean = true
 
     override fun providerVMClass(): Class<HomeFgViewModel> = HomeFgViewModel::class.java
 

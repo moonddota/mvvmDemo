@@ -8,6 +8,7 @@ import com.example.mvvmdemo.network.BaseData
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface RequestServiceRegister {
@@ -24,34 +25,34 @@ interface RequestServiceRegister {
      * 获取轮播图
      */
     @GET("banner/json")
-    suspend fun getBanner():  BaseData<List<BannerRes>>
+    suspend fun getBanner(): BaseData<List<BannerRes>>
 
     /**
      * 获取文章列表
-     *
      * @param page 页码，拼接在连接中，从0开始。
-     * @return
      */
     @GET("article/list/{page}/json")
-    suspend fun listArticle(@Path("page") page: Int):  BaseData<ArticleListRes>
+    suspend fun listArticle(@Path("page") page: Int): BaseData<ArticleListRes>
 
 
     /**
      * 取消收藏
-     *
-     * @param id
-     * @return
      */
     @POST("lg/uncollect_originId/{id}/json")
     suspend fun unCollect(@Path("id") id: String): BaseData<Any>
 
     /**
      * 收藏文章
-     *
-     * @param id
-     * @return
      */
     @POST("lg/collect/{id}/json")
     suspend fun collect(@Path("id") id: String): BaseData<Any>
+
+    /**
+     * 项目列表
+     * @param id   分类id
+     * @param page 页码，拼接在连接中，从0开始。
+     */
+    @GET("project/list/{page}/json")
+    suspend fun listProjects(@Path("page") page: Int, @Query("cid") id: String): BaseData<ArticleListRes>
 
 }

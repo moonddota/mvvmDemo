@@ -7,6 +7,7 @@ import com.example.mvvmdemo.bean.ProjectListRes
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.RetrofitImpl
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 class RequestService {
 
@@ -34,8 +35,11 @@ class RequestService {
     suspend fun unCollect(id: String): BaseData<Any> =
         requestService.unCollect(id)
 
-    suspend fun collect(@Path("id") id: String): BaseData<Any> =
+    suspend fun collect(id: String): BaseData<Any> =
         requestService.collect(id)
+
+    suspend fun listProjects(page: Int, id: String): BaseData<ArticleListRes> =
+        requestService.listProjects(page, id)
 
 
 }

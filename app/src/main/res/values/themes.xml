@@ -34,6 +34,11 @@
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
+    <style name="popmenu_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popumenu_animation_show</item>
+        <item name="android:windowExitAnimation">@anim/popumenu_animation_hide</item>
+    </style>
+
     <declare-styleable name="PorterImageView">
         <attr name="siShape" format="integer|reference" />
     </declare-styleable>

@@ -1,7 +1,12 @@
-package com.example.mvvmdemo.ui.home
+package com.example.mvvmdemo.ui.project
 
 import android.text.TextUtils
 import android.view.View
+import android.widget.ImageView
+import com.blankj.utilcode.util.ConvertUtils.dp2px
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -11,8 +16,11 @@ import com.example.mvvmdemo.util.ARouterUtil
 import com.example.mvvmdemo.widget.shinebutton.ShineButton
 import java.lang.String
 
-class HomeAdapter : BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.rv_item_home_article),
+class ProgectAdapter : BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.rv_item_progect),
     OnItemChildClickListener {
+
+    private val glide by lazy { Glide.with(context) }
+    private val options by lazy { RequestOptions.bitmapTransform(RoundedCorners(dp2px(5f))) }
 
     init {
         addChildClickViewIds(R.id.vItem, R.id.ivCollect)
@@ -31,9 +39,19 @@ class HomeAdapter : BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.rv_it
         )
         holder.setText(R.id.tvTime, item.niceDate)
         holder.setGone(R.id.tvRefresh, !(item.fresh ?: false))
-        holder.setVisible(R.id.top, holder.layoutPosition == 0)
         holder.getView<ShineButton>(R.id.ivCollect).apply {
             isChecked = item.collect ?: false
+        }
+
+        holder.getView<ImageView>(R.id.image).apply {
+            if (TextUtils.isEmpty(item.envelopePic)) {
+                visibility = View.GONE
+            } else {
+                visibility = View.VISIBLE
+                glide.load(item.envelopePic)
+                    .apply(options)
+                    .into(this)
+            }
         }
 
     }

@@ -29,12 +29,8 @@ class SplashAc : BaseViewModelActivity<SplashVM, SplashActivityBinding>() {
     override fun initData() {
         viewModel.run {
             list.observe(this@SplashAc, {
-                if (it.isNotEmpty()) {
-                    SPUtils.getInstance().put(SP.PROJECT_TABS, Gson().toJson(it))
-                    Thread.sleep(1000)
-                    ARouterUtil.jumpMain()
-                    finish()
-                }
+                ARouterUtil.jumpMain()
+                finish()
             })
         }
     }

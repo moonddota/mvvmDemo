@@ -16,6 +16,7 @@ import com.example.mvvmdemo.base.BaseViewModelActivity
 import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.ActivityMainBinding
 import com.example.mvvmdemo.ui.home.HomeFg
+import com.example.mvvmdemo.ui.project.ProjectFg
 import com.example.mvvmdemo.util.toast
 import com.example.mvvmdemo.widget.bubblenavigation.listener.BubbleNavigationChangeListener
 import com.permissionx.guolindev.PermissionX
@@ -28,7 +29,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
     private val mFragments by lazy {
         listOf(
             HomeFg(),
-            HomeFg(),
+            ProjectFg(),
             HomeFg(),
             HomeFg(),
             HomeFg()
