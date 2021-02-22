@@ -1,11 +1,13 @@
 package com.example.mvvmdemo.network.api
 
 import androidx.lifecycle.LiveData
+import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.ArticleListRes
 import com.example.mvvmdemo.bean.BannerRes
 import com.example.mvvmdemo.bean.ProjectListRes
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.RetrofitImpl
+import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -32,6 +34,9 @@ class RequestService {
     suspend fun listArticle(page: Int): BaseData<ArticleListRes> =
         requestService.listArticle(page)
 
+    suspend fun listArticle(page: Int,id:String): BaseData<ArticleListRes> =
+        requestService.listArticle(page,id)
+
     suspend fun unCollect(id: String): BaseData<Any> =
         requestService.unCollect(id)
 
@@ -41,5 +46,10 @@ class RequestService {
     suspend fun listProjects(page: Int, id: String): BaseData<ArticleListRes> =
         requestService.listProjects(page, id)
 
+    suspend fun listTrees(): BaseData<List<TreeListRes>> =
+        requestService.listTrees()
+
+    suspend fun listNavis(): BaseData<List<TreeListRes>> =
+        requestService.listNavis()
 
 }

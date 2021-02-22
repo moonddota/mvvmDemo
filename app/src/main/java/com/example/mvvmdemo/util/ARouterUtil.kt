@@ -13,8 +13,13 @@ object ARouterUtil {
     fun jumpWeb(webUrl: String) {
         ARouter.getInstance().build(RouterActivityPath.Web.PAGER_WEB).withString("webUrl", webUrl)
             .navigation()
-
     }
+
+    fun jumpArticleList(id: String, title: String) {
+        ARouter.getInstance().build(RouterActivityPath.Square.PAGER_SQUARE_LIST)
+            .withString("id", id).withString("title", title).navigation()
+    }
+
 
 
 }

@@ -44,5 +44,10 @@
         <attr name="bt_badgeText" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="IndicatorView">
+        <attr format="dimension" name="indicator_itemPadding"/>
+        <attr format="float" name="indicator_expandingRatio"/>
+        <attr format="float" name="indicator_expandingAllItemRatio"/>
+    </declare-styleable>
 
 </resources>

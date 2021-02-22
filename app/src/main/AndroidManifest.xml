@@ -42,6 +42,7 @@
         </activity>
         <activity android:name=".ui.MainActivity"/>
         <activity android:name=".ui.web.WebAc"/>
+        <activity android:name=".ui.square.SquareListAc"/>
 
 
 

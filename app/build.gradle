@@ -160,4 +160,7 @@ dependencies {
     //webView
     api 'com.just.agentweb:agentweb-androidx:4.1.4' // (必选)
 
+    api 'com.google.android:flexbox:2.0.1'
+
+
 }

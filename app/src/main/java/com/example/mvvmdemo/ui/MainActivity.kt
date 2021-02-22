@@ -5,9 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -17,6 +15,7 @@ import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.ActivityMainBinding
 import com.example.mvvmdemo.ui.home.HomeFg
 import com.example.mvvmdemo.ui.project.ProjectFg
+import com.example.mvvmdemo.ui.square.SquareFg
 import com.example.mvvmdemo.util.toast
 import com.example.mvvmdemo.widget.bubblenavigation.listener.BubbleNavigationChangeListener
 import com.permissionx.guolindev.PermissionX
@@ -30,7 +29,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
         listOf(
             HomeFg(),
             ProjectFg(),
-            HomeFg(),
+            SquareFg(),
             HomeFg(),
             HomeFg()
         )
@@ -89,7 +88,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
         binding.tableHome.setNavigationChangeListener(this)
 
         binding.pager.isUserInputEnabled = false  //关闭滑动
-        binding.pager.offscreenPageLimit  = mFragments.size
+//        binding.pager.offscreenPageLimit  = mFragments.size
         binding.pager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount() = mFragments.size
 

@@ -21,6 +21,9 @@ class RouterActivityPath {
         const val PAGER_WEB = WEB + "/Web"
     }
 
-
+    object Square {
+        const val SQUARE = "/module_square"
+        const val PAGER_SQUARE_LIST = SQUARE + "/square_list"
+    }
 
 }

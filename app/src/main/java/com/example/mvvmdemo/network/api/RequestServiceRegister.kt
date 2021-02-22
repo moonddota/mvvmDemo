@@ -1,6 +1,7 @@
 package com.example.mvvmdemo.network.api
 
 import androidx.lifecycle.LiveData
+import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.ArticleListRes
 import com.example.mvvmdemo.bean.BannerRes
 import com.example.mvvmdemo.bean.ProjectListRes
@@ -34,6 +35,13 @@ interface RequestServiceRegister {
     @GET("article/list/{page}/json")
     suspend fun listArticle(@Path("page") page: Int): BaseData<ArticleListRes>
 
+    /**
+     * 知识体系下的文章
+     * @param page
+     * @param id
+     */
+    @GET("article/list/{page}/json")
+    suspend fun listArticle(@Path("page") page: Int, @Query("cid") id: String?): BaseData<ArticleListRes>
 
     /**
      * 取消收藏
@@ -53,6 +61,22 @@ interface RequestServiceRegister {
      * @param page 页码，拼接在连接中，从0开始。
      */
     @GET("project/list/{page}/json")
-    suspend fun listProjects(@Path("page") page: Int, @Query("cid") id: String): BaseData<ArticleListRes>
+    suspend fun listProjects(
+        @Path("page") page: Int,
+        @Query("cid") id: String
+    ): BaseData<ArticleListRes>
+
+    /**
+     * 获取轮播图
+     */
+    @GET("tree/json")
+    suspend fun listTrees(): BaseData<List<TreeListRes>>
+
+    /**
+     * 获取轮播图
+     */
+    @GET("navi/json")
+    suspend fun listNavis(): BaseData<List<TreeListRes>>
+
 
 }

@@ -58,4 +58,14 @@
         <attr name="shine_size" format="dimension" />
     </declare-styleable>
 
+    <style name="textview_15sp_style" parent="wrap_content_style">
+        <item name="android:textSize">15sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="wrap_content_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

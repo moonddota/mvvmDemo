@@ -1,5 +1,9 @@
 package com.example.mvvmdemo.bean
 
+import android.text.TextUtils
+import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.example.mvvmdemo.constant.C
+
 data class ArticleListRes(
 
     var curPage: Int? = null,
@@ -52,4 +56,11 @@ data class ArticleBean(
     var visible: Int? = null,
     var zan: Int? = null,
     var tags: List<*>? = null
-)
+) : MultiItemEntity {
+
+    override val itemType: Int
+        get() = if (TextUtils.isEmpty(envelopePic)) {
+            C.ARTICLE_ITEM_TEXT
+        } else C.ARTICLE_ITEM_TEXT_PIC
+
+}
