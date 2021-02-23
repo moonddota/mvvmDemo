@@ -65,9 +65,7 @@ class SystemFg(val tag: Int) : BaseViewModelFragment<SystemVM, SystemFragmentBin
                         val textView = findLabel(flexboxLayout)
                         textView.text = article.title ?: ""
                         textView.setOnClickListener { v: View? ->
-                            ARouterUtil.jumpWeb(
-                                article.link?:""
-                            )
+                            ARouterUtil.jumpWeb( article.link?:"")
                         }
                         flexboxLayout.addView(textView)
                     }

@@ -26,4 +26,16 @@ class RouterActivityPath {
         const val PAGER_SQUARE_LIST = SQUARE + "/square_list"
     }
 
+    object Setting{
+        const val SETTING = "/pager/setting"
+    }
+
+    object LanguageSet{
+        const val LANGUAGESET = "/pager/LanguageSet"
+    }
+
+    object AboutUs{
+        const val ABOUTUS = "/pager/AboutUs"
+    }
+
 }

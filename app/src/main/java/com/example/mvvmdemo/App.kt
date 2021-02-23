@@ -8,7 +8,9 @@ import kotlin.properties.Delegates
 
 
 class App : Application() {
+
     companion object {
+        @JvmStatic
         var instance: App by Delegates.notNull()
     }
 

@@ -14,7 +14,9 @@ import com.example.mvvmdemo.base.BaseViewModelActivity
 import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.ActivityMainBinding
 import com.example.mvvmdemo.ui.home.HomeFg
+import com.example.mvvmdemo.ui.mine.MineFg
 import com.example.mvvmdemo.ui.project.ProjectFg
+import com.example.mvvmdemo.ui.publics.PublicFg
 import com.example.mvvmdemo.ui.square.SquareFg
 import com.example.mvvmdemo.util.toast
 import com.example.mvvmdemo.widget.bubblenavigation.listener.BubbleNavigationChangeListener
@@ -30,8 +32,8 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
             HomeFg(),
             ProjectFg(),
             SquareFg(),
-            HomeFg(),
-            HomeFg()
+            PublicFg(),
+            MineFg()
         )
     };
 

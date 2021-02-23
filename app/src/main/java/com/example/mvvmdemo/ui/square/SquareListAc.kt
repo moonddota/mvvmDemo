@@ -47,7 +47,7 @@ class SquareListAc : BaseViewModelActivity<SquareListVM, SquareListActivityBindi
             }
         }
         mAdapter.setOnItemClickListener { _, _, position ->
-            ARouterUtil.jumpWeb(mAdapter.data[position].link ?: "")
+            ARouterUtil.jumpWeb( mAdapter.data[position].link ?: "")
         }
         binding.refreshLayout.setEnableLoadMore(true)
         binding.refreshLayout.setEnableRefresh(true)
