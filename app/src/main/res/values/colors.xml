@@ -66,4 +66,6 @@
     <color name="FFBFBFBF">#FFBFBFBF</color>
     <color name="FF3478F6">#FF3478F6</color>
     <color name="FF222222">#FF222222</color>
+    <color name="no_transparent_10_percent">#1a000000</color>
+
 </resources>

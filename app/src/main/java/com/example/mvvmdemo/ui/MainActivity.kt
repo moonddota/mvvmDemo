@@ -90,7 +90,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
         binding.tableHome.setNavigationChangeListener(this)
 
         binding.pager.isUserInputEnabled = false  //关闭滑动
-//        binding.pager.offscreenPageLimit  = mFragments.size
+        binding.pager.offscreenPageLimit  = mFragments.size
         binding.pager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount() = mFragments.size
 

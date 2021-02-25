@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.*
 import com.example.mvvmdemo.network.BaseData
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 interface RequestServiceRegister {
@@ -98,8 +95,77 @@ interface RequestServiceRegister {
 
     //获取个人积分
     @GET("lg/coin/userinfo/json")
-    suspend fun getIntegral():  BaseData<UserInfo>
+    suspend fun getIntegral(): BaseData<UserInfo>
 
     @GET("user/logout/json")
     suspend fun logout(): BaseData<Any>
+
+    /**
+     * 积分排行榜接口
+     */
+    @GET("coin/rank/{page}/json")
+    suspend fun listScoreRank(@Path("page") page: Int): BaseData<RankListRes>
+
+    /**
+     * 获取个人积分列表
+     *
+     * @param page
+     * @return
+     */
+    @GET("lg/coin/list/{page}/json")
+    suspend fun listIntegral(@Path("page") page: Int): BaseData<RankListRes>
+
+
+    /**
+     * 我的收藏列表
+     */
+    @GET("lg/collect/list/{page}/json")
+    suspend fun listMyCollect(@Path("page") page: Int): BaseData<ArticleListRes>
+
+    /**
+     * 我的分享
+     */
+    @GET("user/lg/private_articles/{page}/json")
+    suspend fun listMyShare(@Path("page") page: Int): BaseData<MyShareBean>
+
+    /**
+     * 删除文章
+     *
+     * @param id 文章id
+     * @return
+     */
+    @POST("lg/user_article/delete/{id}/json")
+    suspend fun deleteArticle(@Path("id") id: String): BaseData<Any>
+
+    /**
+     * 分享文章
+     */
+    @POST("lg/user_article/add/json")
+    suspend fun shareArticle(
+        @Query("title") title: String?,
+        @Query("link") link: String?
+    ): BaseData<Any>
+
+
+    /**
+     * 登录
+     * @param username 账号
+     * @param password 密码
+     */
+    @FormUrlEncoded
+    @POST("user/login")
+    suspend fun login(
+        @Field("username") username: String?,
+        @Field("password") password: String?
+    ): BaseData<UserInfo>
+
+    @FormUrlEncoded
+    @POST("user/register")
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") repassword: String
+    ): BaseData<UserInfo>
+
+
 }

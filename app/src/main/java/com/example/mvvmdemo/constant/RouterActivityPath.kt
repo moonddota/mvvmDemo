@@ -1,5 +1,6 @@
 package com.example.mvvmdemo.constant
 
+
 class RouterActivityPath {
 
     /**
@@ -36,6 +37,34 @@ class RouterActivityPath {
 
     object AboutUs{
         const val ABOUTUS = "/pager/AboutUs"
+    }
+
+    object ScoreRankList{
+        const val SCORERANKLISTAC = "/ScoreRankList/AC"
+    }
+
+    object MyScore{
+        const val MYSCOREAC = "/MyScore/Ac"
+    }
+
+    object MyCollect{
+        const val MyCollectAc = "/MyCollect/Ac"
+    }
+
+    object MyShare{
+        const val MyShareAc = "/MyShare/Ac"
+    }
+
+    object ShareArticle{
+        const val ShareArticleAc = "/ShareArticle/Ac"
+    }
+
+    object OpenSource{
+        const val OpenSourceAc = "/OpenSource/Ac"
+    }
+
+    object Login{
+        const val LoginAc = "/module_login/Login"
     }
 
 }

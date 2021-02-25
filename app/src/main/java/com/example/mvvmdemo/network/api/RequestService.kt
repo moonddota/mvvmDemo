@@ -5,6 +5,7 @@ import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.*
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.RetrofitImpl
+import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -59,6 +60,36 @@ class RequestService {
     suspend fun getIntegral(): BaseData<UserInfo> =
         requestService.getIntegral()
 
-    suspend fun logout(): BaseData<Any>  =
+    suspend fun logout(): BaseData<Any> =
         requestService.logout()
+
+    suspend fun listScoreRank(page: Int): BaseData<RankListRes> =
+        requestService.listScoreRank(page)
+
+    suspend fun listIntegral(page: Int): BaseData<RankListRes> =
+        requestService.listIntegral(page)
+
+    suspend fun listMyCollect(page: Int): BaseData<ArticleListRes> =
+        requestService.listMyCollect(page)
+
+    suspend fun listMyShare(page: Int): BaseData<MyShareBean> =
+        requestService.listMyShare(page)
+
+    suspend fun deleteArticle(id: String): BaseData<Any> =
+        requestService.deleteArticle(id)
+
+    suspend fun shareArticle(title: String?, link: String?): BaseData<Any> =
+        requestService.shareArticle(title, link)
+
+    suspend fun login(username: String, password: String): BaseData<UserInfo> =
+        requestService.login(username, password)
+
+    suspend fun register(
+        username: String,
+        password: String,
+        repassword: String
+    ): BaseData<UserInfo> =
+        requestService.register(username, password,repassword)
+
+
 }

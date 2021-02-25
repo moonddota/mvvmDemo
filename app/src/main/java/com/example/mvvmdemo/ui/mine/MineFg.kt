@@ -9,6 +9,7 @@ import com.example.mvvmdemo.bean.UserInfo
 import com.example.mvvmdemo.constant.C
 import com.example.mvvmdemo.databinding.MineFragmentBinding
 import com.example.mvvmdemo.util.ARouterUtil
+import com.example.mvvmdemo.util.toast
 import com.google.gson.Gson
 import java.lang.String
 
@@ -27,14 +28,14 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
             binding.llHead.layoutParams = layoutParams
         }
 
-        binding.ivSet.setOnClickListener { ARouterUtil.jumpSetting()}
-//        binding.tvScoreRankList.setOnClickListener { ScoreRankListAc.launch(context) }
-//        binding.llScore.setOnClickListener { MyScoreAc.launch(context) }
-//        binding.llCollect.setOnClickListener { MyCollectAc.launch(context) }
-//        binding.llShare.setOnClickListener { MyShareAc.launch(context) }
-//        binding.llProjects.setOnClickListener { OpenSourceAc.launch(context) }
-//        binding.llAbout.setOnClickListener { AboutAuthorAc.launch(context) }
-
+        binding.ivAvatar.setOnClickListener {  ARouterUtil.jumpLogin() }
+        binding.ivSet.setOnClickListener { checkLogin { ARouterUtil.jumpSetting() } }
+        binding.tvScoreRankList.setOnClickListener { checkLogin { ARouterUtil.jumpScoreRankListAc() } }
+        binding.llScore.setOnClickListener { checkLogin { ARouterUtil.jumpMyScoreAc() } }
+        binding.llCollect.setOnClickListener { checkLogin { ARouterUtil.jumpMyCollectAc() } }
+        binding.llShare.setOnClickListener { checkLogin { ARouterUtil.jumpMyShareAc() } }
+        binding.llProjects.setOnClickListener { ARouterUtil.jumpOpenSourceAc() }
+        binding.llAbout.setOnClickListener { toast("谢谢使用") }
     }
 
     override fun initData() {
@@ -66,6 +67,19 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
             binding.tvMyScore.text = ""
             binding.tvName.text = getString(R.string.unlogin)
             binding.tvLevel.visibility = View.GONE
+        }
+    }
+
+    private fun checkLogin(block: () -> Unit) {
+        val ss = SPUtils.getInstance().getString(C.USER_INFO, "")
+        val userInfo = Gson().fromJson(
+            ss,
+            UserInfo::class.java
+        )
+        if (userInfo == null) {
+            toast("清先登录")
+        } else {
+            block()
         }
     }
 
