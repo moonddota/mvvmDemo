@@ -1,7 +1,6 @@
 package com.example.mvvmdemo.ui.splash
 
 import com.example.mvvmdemo.base.TreeListRes
-import com.example.mvvmdemo.bean.ProjectListRes
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.BaseRepository
 import com.example.mvvmdemo.network.api.RequestService

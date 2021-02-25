@@ -25,11 +25,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorListener;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
-/**
- * Created on 2016/7/14.
- *
- * @author Yan Zhenjie.
- */
 public class AnimatorUtil {
 
     public static  final String TAG="xujun";

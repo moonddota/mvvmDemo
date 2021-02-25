@@ -1,17 +1,13 @@
 package com.example.mvvmdemo.base
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.classic.common.MultipleStatusView
-import com.classic.common.MultipleStatusView.OnViewStatusChangeListener
 import com.dylanc.viewbinding.inflateBindingWithGeneric
 import com.example.mvvmdemo.R
-import com.example.mvvmdemo.util.toast
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
 

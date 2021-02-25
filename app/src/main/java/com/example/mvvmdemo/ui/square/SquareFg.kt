@@ -8,7 +8,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseFragment
 import com.example.mvvmdemo.databinding.SquareFragmentBinding
-import com.example.mvvmdemo.ui.home.HomeFg
 import com.google.android.material.tabs.TabLayoutMediator
 
 class SquareFg() : BaseFragment<SquareFragmentBinding>() {

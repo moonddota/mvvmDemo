@@ -21,7 +21,6 @@ class OkHttpClientImpl {
         return cookieJar!!
     }
 
-
     private var okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         .addInterceptor(HttpLogInterceptor())
         .addInterceptor(RequestHeaderInterceptor())
@@ -32,13 +31,11 @@ class OkHttpClientImpl {
         .readTimeout(20, TimeUnit.SECONDS)
         .writeTimeout(20, TimeUnit.SECONDS)
 
-
     private fun getOkHttpClient(): OkHttpClient {
         return okHttpClientBuilder.build()
     }
 
     companion object {
-
         fun generate(): OkHttpClient {
             return with(OkHttpClientImpl()) {
                 getOkHttpClient()

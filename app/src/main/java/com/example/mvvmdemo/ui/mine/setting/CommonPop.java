@@ -4,12 +4,9 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
 import com.example.mvvmdemo.R;
 import com.example.mvvmdemo.util.AppProvider;
-
 import razerdp.basepopup.BasePopupWindow;
 import razerdp.util.animation.AnimationHelper;
 import razerdp.util.animation.TranslationConfig;

@@ -1,8 +1,6 @@
 package com.example.mvvmdemo.ui.mine.my_collect
 
 import com.example.mvvmdemo.bean.ArticleListRes
-import com.example.mvvmdemo.bean.MyShareBean
-import com.example.mvvmdemo.bean.RankListRes
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.BaseRepository
 import com.example.mvvmdemo.network.api.RequestService

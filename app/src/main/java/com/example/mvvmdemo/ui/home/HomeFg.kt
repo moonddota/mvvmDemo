@@ -1,8 +1,6 @@
 package com.example.mvvmdemo.ui.home
 
 import android.graphics.Color
-import android.text.TextUtils
-import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils.dp2px
@@ -16,7 +14,6 @@ import com.example.mvvmdemo.bean.ArticleBean
 import com.example.mvvmdemo.bean.BannerRes
 import com.example.mvvmdemo.databinding.HomeFragmentBinding
 import com.example.mvvmdemo.util.ARouterUtil
-import com.example.mvvmdemo.widget.shinebutton.ShineButton
 import com.scwang.smart.refresh.layout.api.RefreshHeader
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.constant.RefreshState

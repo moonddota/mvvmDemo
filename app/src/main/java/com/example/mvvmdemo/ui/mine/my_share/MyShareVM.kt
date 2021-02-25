@@ -2,7 +2,6 @@ package com.example.mvvmdemo.ui.mine.my_share
 
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmdemo.base.BaseViewModel
-import com.example.mvvmdemo.bean.ArticleListRes
 import com.example.mvvmdemo.bean.MyShareBean
 
 class MyShareVM : BaseViewModel() {

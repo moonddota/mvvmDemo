@@ -1,6 +1,5 @@
 package com.example.mvvmdemo.ui.mine.setting
 
-import androidx.appcompat.app.AlertDialog
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.AppUtils
 import com.example.mvvmdemo.R

@@ -1,14 +1,9 @@
 package com.example.mvvmdemo.network.api
 
-import androidx.lifecycle.LiveData
 import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.*
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.RetrofitImpl
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
 
 class RequestService {
 

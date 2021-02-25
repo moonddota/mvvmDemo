@@ -2,7 +2,6 @@ package com.example.mvvmdemo.dialog
 
 import android.view.Gravity
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseDialogFragment
 import com.example.mvvmdemo.databinding.MainDialogBinding

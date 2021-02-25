@@ -4,9 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mvvmdemo.base.BaseViewModel
 import com.example.mvvmdemo.bean.ArticleListRes
 import com.example.mvvmdemo.bean.BannerRes
-import com.example.mvvmdemo.network.BaseData
-import com.example.mvvmdemo.network.api.RequestService
-import kotlinx.coroutines.delay
 
 class HomeFgViewModel : BaseViewModel() {
     private val repository = HomeRepository()

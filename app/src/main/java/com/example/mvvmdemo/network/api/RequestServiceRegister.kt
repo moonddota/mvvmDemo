@@ -1,6 +1,5 @@
 package com.example.mvvmdemo.network.api
 
-import androidx.lifecycle.LiveData
 import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.*
 import com.example.mvvmdemo.network.BaseData

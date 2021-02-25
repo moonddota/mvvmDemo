@@ -1,7 +1,6 @@
 package com.example.mvvmdemo.network
 
 
-import android.content.ActivityNotFoundException
 import com.example.mvvmdemo.util.toast
 
 open class BaseRepository {

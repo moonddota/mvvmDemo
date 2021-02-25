@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
 import android.view.Gravity
-import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseDialogFragment

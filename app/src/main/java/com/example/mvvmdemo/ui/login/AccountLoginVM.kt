@@ -1,7 +1,6 @@
 package com.example.mvvmdemo.ui.login
 
 import androidx.lifecycle.MutableLiveData
-import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.SPUtils
 import com.example.mvvmdemo.base.BaseViewModel
 import com.example.mvvmdemo.constant.C

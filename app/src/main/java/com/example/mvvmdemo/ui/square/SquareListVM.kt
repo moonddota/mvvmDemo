@@ -1,11 +1,9 @@
 package com.example.mvvmdemo.ui.square
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.LogUtils
 import com.example.mvvmdemo.base.BaseViewModel
 import com.example.mvvmdemo.bean.ArticleListRes
-import com.example.mvvmdemo.ui.project.ProjectRepository
 
 class SquareListVM : BaseViewModel() {
     private val repository = SquareListRepository()

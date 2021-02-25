@@ -4,7 +4,6 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.PopupWindow
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -58,17 +57,17 @@ class ProjectPopuWindow(private val activity: Activity) {
         mAdapter.setList(list)
     }
 
-    fun dismiss(){
+    fun dismiss() {
         popWnd.dismiss()
     }
 
-    fun backgroundAlpha(bgAlpha: Float) {
+    private fun backgroundAlpha(bgAlpha: Float) {
 //        val lp: WindowManager.LayoutParams = activity.window.attributes
 //        lp.alpha = bgAlpha //0.0-1.0
 //        activity.window.attributes = lp
     }
 
-    fun isShow():Boolean{
+    fun isShow(): Boolean {
         return popWnd.isShowing
     }
 

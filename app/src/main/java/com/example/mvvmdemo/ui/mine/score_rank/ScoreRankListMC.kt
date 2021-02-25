@@ -3,7 +3,6 @@ package com.example.mvvmdemo.ui.mine.score_rank
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmdemo.base.BaseViewModel
 import com.example.mvvmdemo.bean.RankListRes
-import com.example.mvvmdemo.ui.mine.setting.SettingRepository
 
 class ScoreRankListMC : BaseViewModel() {
     private val repository = ScoreRankListRepository()

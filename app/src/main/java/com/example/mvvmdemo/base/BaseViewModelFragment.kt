@@ -2,7 +2,6 @@ package com.example.mvvmdemo.base
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.example.mvvmdemo.util.toast

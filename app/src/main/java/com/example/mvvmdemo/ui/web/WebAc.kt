@@ -3,7 +3,6 @@ package com.example.mvvmdemo.ui.web
 import android.graphics.Bitmap
 import android.util.Log
 import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.widget.LinearLayout
 import com.alibaba.android.arouter.facade.annotation.Route

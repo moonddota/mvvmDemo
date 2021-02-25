@@ -1,6 +1,5 @@
 package com.example.mvvmdemo.ui.mine
 
-import com.example.mvvmdemo.bean.PublicAuthorListRes
 import com.example.mvvmdemo.bean.UserInfo
 import com.example.mvvmdemo.network.BaseData
 import com.example.mvvmdemo.network.BaseRepository
