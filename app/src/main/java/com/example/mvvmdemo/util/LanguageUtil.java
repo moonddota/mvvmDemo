@@ -9,10 +9,6 @@ import android.os.Build;
 import android.os.LocaleList;
 import android.util.DisplayMetrics;
 
-import com.blankj.utilcode.util.SPUtils;
-import com.example.mvvmdemo.constant.C;
-import com.google.gson.Gson;
-
 import java.util.Locale;
 
 public class LanguageUtil {
@@ -23,9 +19,7 @@ public class LanguageUtil {
     }
 
     public static Locale getCurrentLanguage() {
-        String ss = SPUtils.getInstance().getString(C.LANGUAGE, "");
-        Locale locale = new Gson().fromJson(ss, Locale.class);
-
+        Locale locale = MMkvHelper.getInstance().getLanguage();
         if (locale == null) {
             locale = Locale.getDefault();
         }
@@ -48,7 +42,7 @@ public class LanguageUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             LanguageUtil.setConfiguration(AppProvider.getInstance().getApp(), locale);
         }
-        SPUtils.getInstance().put(C.LANGUAGE,new Gson().toJson(locale));
+        MMkvHelper.getInstance().saveLanguage(locale);
     }
 
     /**

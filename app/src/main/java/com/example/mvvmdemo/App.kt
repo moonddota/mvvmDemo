@@ -4,6 +4,7 @@ import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.tencent.mmkv.MMKV
 import kotlin.properties.Delegates
 
 
@@ -20,6 +21,8 @@ class App : Application() {
         Utils.init(this)
         LiveEventBus.config()
         initArouter()
+        //初始化mmkv
+        MMKV.initialize(this)
     }
 
     /**

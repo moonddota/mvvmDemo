@@ -49,8 +49,10 @@ class MyScoreAc : BaseViewModelActivity<MyScoreVM, MyScoreActivityBinding>(),
             if (it.second) {
                 dataList.clear()
             }
-            dataList.addAll(it.first?.datas?: listOf())
+           val baen = it.first
+            dataList.addAll(baen?.datas?: listOf())
             adapterMyScoreList.notifyDataSetChanged()
+            binding.aaa.smartRefreshLayout.setEnableLoadMore(baen?.curPage ?: 0 < baen?.pageCount ?: 0)
         })
     }
 

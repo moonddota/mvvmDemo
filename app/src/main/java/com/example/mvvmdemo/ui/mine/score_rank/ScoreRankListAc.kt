@@ -4,14 +4,11 @@ import android.text.TextUtils
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.blankj.utilcode.util.SPUtils
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseViewModelActivity
-import com.example.mvvmdemo.bean.UserInfo
-import com.example.mvvmdemo.constant.C
 import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.ScoreRankListActivityBinding
-import com.google.gson.Gson
+import com.example.mvvmdemo.util.MMkvHelper
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -31,8 +28,7 @@ class ScoreRankListAc : BaseViewModelActivity<ScoreRankListMC, ScoreRankListActi
         binding.aaa.recyclerView.adapter = mAdapter
         binding.aaa.smartRefreshLayout.setOnRefreshLoadMoreListener(this)
 
-        val ss = SPUtils.getInstance().getString(C.USER_INFO, "")
-        val userInfo = Gson().fromJson(ss, UserInfo::class.java)
+        val userInfo = MMkvHelper.getInstance().userInfo;
         binding.tvName.text = userInfo?.username ?: ""
         binding.tvCoins.text = userInfo?.coinCount ?: ""
         val rank = userInfo?.rank ?: ""

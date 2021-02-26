@@ -10,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.LayoutHelper
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper
-import com.blankj.utilcode.util.SPUtils
 import com.example.mvvmdemo.R
-import com.example.mvvmdemo.bean.UserInfo
 import com.example.mvvmdemo.constant.C
-import com.google.gson.Gson
+import com.example.mvvmdemo.util.MMkvHelper
 
 class RvAdapterMyScoreHeader : DelegateAdapter.Adapter<RvAdapterMyScoreHeader.ViewHolder>() {
 
@@ -42,8 +40,7 @@ class RvAdapterMyScoreHeader : DelegateAdapter.Adapter<RvAdapterMyScoreHeader.Vi
 
 
     private fun startAnim(textView: TextView) {
-        val ss = SPUtils.getInstance().getString(C.USER_INFO, "")
-        val coinCount: String = Gson().fromJson(ss, UserInfo::class.java)?.coinCount?:"0"
+        val coinCount: String = MMkvHelper.getInstance().userInfo?.coinCount?:"0"
 
         val valueAnimator = ValueAnimator.ofInt(0, coinCount.toInt())
         //播放时长

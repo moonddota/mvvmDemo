@@ -1,5 +1,6 @@
 package com.example.mvvmdemo.ui.mine.my_collect
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.mvvmdemo.R
@@ -52,15 +53,16 @@ class MyCollectAc : BaseViewModelActivity<MyCollectVM, MyCollectActivityBinding>
     override fun initData() {
         getList(false)
         viewModel.list.observe(this, {
-            val datas: List<ArticleBean> = it.first?.datas ?: listOf()
-            datas.forEach { data ->
+            val bean = it.first
+            bean?.datas?.forEach { data ->
                 data.collect = true
             }
             if (it.second) {
-                mAdapter.addData(datas)
+                mAdapter.addData(bean?.datas ?: listOf())
             } else {
-                mAdapter.setList(datas)
+                mAdapter.setList(bean?.datas ?: listOf())
             }
+            binding.aaa.smartRefreshLayout.setEnableLoadMore(bean?.curPage ?: 0 < bean?.pageCount ?: 0)
         })
     }
 

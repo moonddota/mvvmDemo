@@ -90,7 +90,6 @@ android {
             outputFileName = "hbsc_${variant.name.replace('Release', '_release')}_${variant.mergedFlavor.versionCode}_${variant.mergedFlavor.versionName}_${new Date().format("yy_MM_dd_HH_mm")}.apk"
         }
     }
-
 }
 
 dependencies {
@@ -175,5 +174,6 @@ dependencies {
 
     api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
+    implementation 'com.tencent:mmkv-static:1.2.7'
 
 }

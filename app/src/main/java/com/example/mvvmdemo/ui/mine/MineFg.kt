@@ -2,15 +2,13 @@ package com.example.mvvmdemo.ui.mine
 
 import android.view.View
 import android.widget.RelativeLayout
-import com.blankj.utilcode.util.SPUtils
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseViewModelFragment
 import com.example.mvvmdemo.bean.UserInfo
-import com.example.mvvmdemo.constant.C
 import com.example.mvvmdemo.databinding.MineFragmentBinding
 import com.example.mvvmdemo.util.ARouterUtil
+import com.example.mvvmdemo.util.MMkvHelper
 import com.example.mvvmdemo.util.toast
-import com.google.gson.Gson
 import java.lang.String
 
 class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
@@ -41,7 +39,7 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
     override fun initData() {
         viewModel.info.observe(viewLifecycleOwner, {
             binding.tvLevel.visibility = View.VISIBLE
-            var userInfo1 = it
+            val userInfo1 = it
             binding.tvId.text = String.format("ID: %s", userInfo1?.userId ?: "")
             binding.tvLevel.text = String.format("lv.%d", userInfo1?.level ?: 0)
             binding.tvMyScore.text = String.format(
@@ -51,14 +49,13 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
             if (userInfo != null) {
                 userInfo1?.username = userInfo!!.username
             }
-            SPUtils.getInstance().put(C.USER_INFO, Gson().toJson(userInfo1))
+            MMkvHelper.getInstance().saveUserInfo(userInfo1)
         })
     }
 
     override fun onResume() {
         super.onResume()
-        val ss = SPUtils.getInstance().getString(C.USER_INFO, "")
-        userInfo = Gson().fromJson(ss, UserInfo::class.java)
+        userInfo = MMkvHelper.getInstance().userInfo
         if (userInfo != null) {
             binding.tvName.text = userInfo?.username ?: ""
             viewModel.getScore()
@@ -71,11 +68,7 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
     }
 
     private fun checkLogin(block: () -> Unit) {
-        val ss = SPUtils.getInstance().getString(C.USER_INFO, "")
-        val userInfo = Gson().fromJson(
-            ss,
-            UserInfo::class.java
-        )
+        val userInfo = MMkvHelper.getInstance().userInfo
         if (userInfo == null) {
             toast("清先登录")
         } else {

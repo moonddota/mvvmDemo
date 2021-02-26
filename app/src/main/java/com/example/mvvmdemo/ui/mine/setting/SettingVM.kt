@@ -1,10 +1,9 @@
 package com.example.mvvmdemo.ui.mine.setting
 
 import androidx.lifecycle.MutableLiveData
-import com.blankj.utilcode.util.SPUtils
 import com.example.mvvmdemo.base.BaseViewModel
-import com.example.mvvmdemo.constant.C
 import com.example.mvvmdemo.util.CacheUtil
+import com.example.mvvmdemo.util.MMkvHelper
 
 class SettingVM : BaseViewModel() {
 
@@ -23,7 +22,7 @@ class SettingVM : BaseViewModel() {
     val isLoging = MutableLiveData<Boolean>()
     fun logout() = launchUI(isLoging) {
         repository.logout()
-        SPUtils.getInstance().remove(C.USER_INFO)
+        MMkvHelper.getInstance().logout()
         true
     }
 
