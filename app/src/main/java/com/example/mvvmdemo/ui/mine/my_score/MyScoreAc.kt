@@ -7,8 +7,10 @@ import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseViewModelActivity
 import com.example.mvvmdemo.bean.RankBean
+import com.example.mvvmdemo.constant.C
 import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.MyScoreActivityBinding
+import com.example.mvvmdemo.util.ARouterUtil
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -32,7 +34,7 @@ class MyScoreAc : BaseViewModelActivity<MyScoreVM, MyScoreActivityBinding>(),
         with(binding.topbar.ivRight) {
             visibility = View.VISIBLE
             setBackgroundResource(R.mipmap.ic_question)
-//            RouterUtil.launchWeb(C.INTERGRAL_URL)
+            setOnClickListener { ARouterUtil.jumpWeb(C.INTERGRAL_URL) }
         }
 
         adapters.add(adapterMyScoreHeader)
@@ -46,7 +48,7 @@ class MyScoreAc : BaseViewModelActivity<MyScoreVM, MyScoreActivityBinding>(),
     override fun initData() {
         getList(false)
         viewModel.data.observe(this, {
-            if (it.second) {
+            if (!it.second) {
                 dataList.clear()
             }
            val baen = it.first

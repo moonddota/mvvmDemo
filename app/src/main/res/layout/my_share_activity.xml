@@ -85,5 +85,51 @@
             app:layout_behavior="@string/behavior_my_fab_scale"
             app:pressedTranslationZ="10dp" />
 
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="16dp"
+            app:menu_colorNormal="#FF4081"
+            app:menu_colorPressed="#E91E63"
+            app:menu_colorRipple="#C2185B"
+            app:menu_labels_ellipsize="end"
+            app:menu_labels_singleLine="true"
+            tools:ignore="RtlHardcoded">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_loading"
+                style="@style/FabMenu_Buttons"
+                android:src="@mipmap/ic_fab_loading"
+                app:fab_label="显示加载中视图"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_empty"
+                style="@style/FabMenu_Buttons"
+                android:src="@mipmap/ic_fab_empty"
+                app:fab_label="显示空视图"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_error"
+                style="@style/FabMenu_Buttons"
+                android:src="@mipmap/ic_fab_error"
+                app:fab_label="显示错误视图"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_no_network"
+                style="@style/FabMenu_Buttons"
+                android:src="@mipmap/ic_fab_no_network"
+                app:fab_label="显示网络异常视图"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_content"
+                style="@style/FabMenu_Buttons"
+                android:src="@mipmap/ic_fab_content"
+                app:fab_label="显示内容视图"/>
+
+        </com.github.clans.fab.FloatingActionMenu>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

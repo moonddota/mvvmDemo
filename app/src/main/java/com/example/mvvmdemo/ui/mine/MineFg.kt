@@ -67,12 +67,12 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
         }
     }
 
-    private fun checkLogin(block: () -> Unit) {
+    private fun checkLogin(function: () -> Unit) {
         val userInfo = MMkvHelper.getInstance().userInfo
         if (userInfo == null) {
             toast("清先登录")
         } else {
-            block()
+            function()
         }
     }
 
