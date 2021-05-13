@@ -3,6 +3,8 @@ package com.example.mvvmdemo.ui.project
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.blankj.utilcode.util.ConvertUtils.dp2px
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -45,9 +47,9 @@ class ProgectAdapter : BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.rv
 
         holder.getView<ImageView>(R.id.image).apply {
             if (TextUtils.isEmpty(item.envelopePic)) {
-                visibility = View.GONE
+                isGone = true
             } else {
-                visibility = View.VISIBLE
+                isVisible = true
                 glide.load(item.envelopePic)
                     .apply(options)
                     .into(this)

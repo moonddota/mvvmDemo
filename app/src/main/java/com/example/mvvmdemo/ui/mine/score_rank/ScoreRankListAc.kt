@@ -2,6 +2,8 @@ package com.example.mvvmdemo.ui.mine.score_rank
 
 import android.text.TextUtils
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.mvvmdemo.R
@@ -34,17 +36,17 @@ class ScoreRankListAc : BaseViewModelActivity<ScoreRankListMC, ScoreRankListActi
         val rank = userInfo?.rank ?: ""
         if (!TextUtils.isEmpty(rank)) {
             if (rank == "1" || rank == "2" || rank == "3") {
-                binding.ivLogo.visibility = View.VISIBLE
+                binding.ivLogo. isVisible = true
                 binding.ivLogo.setImageResource(if (rank == "1") R.mipmap.gold_crown else if (rank == "2") R.mipmap.silver_crown else R.mipmap.cooper_crown)
-                binding.tvLogo.visibility = View.GONE
+                binding.tvLogo.isGone = true
             } else {
-                binding.ivLogo.visibility = View.GONE
-                binding.tvLogo.visibility = View.VISIBLE
+                binding.ivLogo.isGone = true
+                binding.tvLogo. isVisible = true
                 binding.tvLogo.text = rank
             }
         } else {
-            binding.tvLogo.visibility = View.GONE
-            binding.ivLogo.visibility = View.GONE
+            binding.tvLogo.isGone = true
+            binding.ivLogo.isGone = true
         }
 
     }
@@ -57,6 +59,7 @@ class ScoreRankListAc : BaseViewModelActivity<ScoreRankListMC, ScoreRankListActi
                 }else{
                     mAdapter.setList(it.first?.datas?: listOf())
                 }
+            binding.aaa.smartRefreshLayout.setEnableLoadMore(it.first?.curPage ?: 0 < it.first?.pageCount ?: 0)
         })
     }
 

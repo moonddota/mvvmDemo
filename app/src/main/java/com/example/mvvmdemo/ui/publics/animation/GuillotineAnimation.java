@@ -40,7 +40,7 @@ public class GuillotineAnimation {
         this.mListener = builder.guillotineListener;
         this.mGuillotineView = builder.guillotineView;
         this.mDuration = builder.duration > 0 ? builder.duration : DEFAULT_DURATION;
-        this.mDelay = builder.startDelay;
+        this. mDelay = builder.startDelay;
         this.mIsRightToLeftLayout = builder.isRightToLeftLayout;
         this.mInterpolator = builder.interpolator == null ? new GuillotineInterpolator() : builder.interpolator;
         setUpOpeningView(builder.openingView);

@@ -1,6 +1,6 @@
 package com.example.mvvmdemo.ui.mine.my_score
 
-import android.view.View
+import androidx.core.view.isVisible
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
@@ -32,7 +32,7 @@ class MyScoreAc : BaseViewModelActivity<MyScoreVM, MyScoreActivityBinding>(),
         binding.topbar.tvTitle.text = "我的积分"
         binding.topbar.ivLeft.setOnClickListener { finish() }
         with(binding.topbar.ivRight) {
-            visibility = View.VISIBLE
+            isVisible = true
             setBackgroundResource(R.mipmap.ic_question)
             setOnClickListener { ARouterUtil.jumpWeb(C.INTERGRAL_URL) }
         }

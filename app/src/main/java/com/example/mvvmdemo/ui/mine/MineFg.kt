@@ -2,6 +2,7 @@ package com.example.mvvmdemo.ui.mine
 
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.view.isVisible
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseViewModelFragment
 import com.example.mvvmdemo.bean.UserInfo
@@ -38,7 +39,7 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
 
     override fun initData() {
         viewModel.info.observe(viewLifecycleOwner, {
-            binding.tvLevel.visibility = View.VISIBLE
+            binding.tvLevel.isVisible = true
             val userInfo1 = it
             binding.tvId.text = String.format("ID: %s", userInfo1?.userId ?: "")
             binding.tvLevel.text = String.format("lv.%d", userInfo1?.level ?: 0)

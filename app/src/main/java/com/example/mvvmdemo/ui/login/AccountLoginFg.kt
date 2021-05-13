@@ -14,7 +14,7 @@ class AccountLoginFg : BaseViewModelFragment<AccountLoginVM, FgAccountLoginBindi
 
     override fun initView() {
 
-        binding.ivCha.setOnClickListener { activity!!.finish() }
+        binding.ivCha.setOnClickListener { requireActivity().finish() }
         binding.btnLogin.setOnClickListener { login() }
         binding.tvRegister.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_fragment_register)
@@ -25,7 +25,7 @@ class AccountLoginFg : BaseViewModelFragment<AccountLoginVM, FgAccountLoginBindi
     override fun initData() {
         viewModel.data.observe(requireActivity(), {
             if (it) {
-                activity!!.finish()
+                requireActivity().finish()
             } else {
                 binding.btnLogin.reset()
             }

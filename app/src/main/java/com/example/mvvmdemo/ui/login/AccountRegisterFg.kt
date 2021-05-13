@@ -31,7 +31,7 @@ class AccountRegisterFg :
         binding.btnLogin.reset()
         viewModel.data.observe(viewLifecycleOwner,{
             if (it){
-                activity!!.finish()
+                requireActivity().finish()
             }else{
                 binding.btnLogin.success()
             }

@@ -41,18 +41,22 @@ public class MMkvHelper {
         mmkv.encode(C.USER_INFO, userInfo);
     }
 
-    public UserInfo getUserInfo() { return mmkv.decodeParcelable(C.USER_INFO, UserInfo.class); }
+    public UserInfo getUserInfo() {
+        return mmkv.decodeParcelable(C.USER_INFO, UserInfo.class);
+    }
 
-    public void saveLanguage(Locale locale) { mmkv.encode(C.LANGUAGE, new Gson().toJson(locale)); }
+    public void saveLanguage(Locale locale) {
+        mmkv.encode(C.LANGUAGE, new Gson().toJson(locale));
+    }
 
     public Locale getLanguage() {
         String s = mmkv.decodeString(C.LANGUAGE);
-        if (TextUtils.isEmpty(s)){
+        if (TextUtils.isEmpty(s)) {
             return null;
         }
         try {
             return new Gson().fromJson(s, Locale.class);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

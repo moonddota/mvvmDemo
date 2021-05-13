@@ -19,51 +19,51 @@ class RouterActivityPath {
      */
     object Web {
         const val WEB = "/module_web"
-        const val PAGER_WEB = WEB + "/Web"
+        const val PAGER_WEB = "${WEB}/Web"
     }
 
     object Square {
         const val SQUARE = "/module_square"
-        const val PAGER_SQUARE_LIST = SQUARE + "/square_list"
+        const val PAGER_SQUARE_LIST = "${SQUARE}/square_list"
     }
 
-    object Setting{
+    object Setting {
         const val SETTING = "/pager/setting"
     }
 
-    object LanguageSet{
+    object LanguageSet {
         const val LANGUAGESET = "/pager/LanguageSet"
     }
 
-    object AboutUs{
+    object AboutUs {
         const val ABOUTUS = "/pager/AboutUs"
     }
 
-    object ScoreRankList{
+    object ScoreRankList {
         const val SCORERANKLISTAC = "/ScoreRankList/AC"
     }
 
-    object MyScore{
+    object MyScore {
         const val MYSCOREAC = "/MyScore/Ac"
     }
 
-    object MyCollect{
+    object MyCollect {
         const val MyCollectAc = "/MyCollect/Ac"
     }
 
-    object MyShare{
+    object MyShare {
         const val MyShareAc = "/MyShare/Ac"
     }
 
-    object ShareArticle{
+    object ShareArticle {
         const val ShareArticleAc = "/ShareArticle/Ac"
     }
 
-    object OpenSource{
+    object OpenSource {
         const val OpenSourceAc = "/OpenSource/Ac"
     }
 
-    object Login{
+    object Login {
         const val LoginAc = "/module_login/Login"
     }
 

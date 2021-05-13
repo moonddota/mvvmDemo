@@ -13,13 +13,15 @@ object ARouterUtil {
     }
 
     fun jumpWeb(webUrl: String) {
-        ARouter.getInstance().build(RouterActivityPath.Web.PAGER_WEB).withString("webUrl", webUrl)
+        ARouter.getInstance().build(RouterActivityPath.Web.PAGER_WEB)
+            .withString("webUrl", webUrl)
             .navigation()
     }
 
     fun jumpArticleList(id: String, title: String) {
         ARouter.getInstance().build(RouterActivityPath.Square.PAGER_SQUARE_LIST)
-            .withString("id", id).withString("title", title)
+            .withString("id", id)
+            .withString("title", title)
             .navigation()
     }
 
@@ -69,12 +71,12 @@ object ARouterUtil {
     }
 
 
-    fun jumpOpenSourceAc(){
+    fun jumpOpenSourceAc() {
         ARouter.getInstance().build(RouterActivityPath.OpenSource.OpenSourceAc)
             .navigation()
     }
 
-    fun jumpLogin(){
+    fun jumpLogin() {
         ARouter.getInstance().build(RouterActivityPath.Login.LoginAc)
             .navigation()
     }

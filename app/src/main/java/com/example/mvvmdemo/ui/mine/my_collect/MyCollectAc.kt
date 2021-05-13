@@ -1,11 +1,9 @@
 package com.example.mvvmdemo.ui.mine.my_collect
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseViewModelActivity
-import com.example.mvvmdemo.bean.ArticleBean
 import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.MyCollectActivityBinding
 import com.example.mvvmdemo.ui.square.RvAdapterArticleList
@@ -37,10 +35,10 @@ class MyCollectAc : BaseViewModelActivity<MyCollectVM, MyCollectActivityBinding>
                 R.drawable.linear_split_line
             )
         )
-        mAdapter.setOnItemClickListener { adapter, view, position ->
+        mAdapter.setOnItemClickListener { _, _, position ->
             ARouterUtil.jumpWeb(mAdapter.data[position].link ?: "")
         }
-        mAdapter.setOnItemChildClickListener { adapter, view, position ->
+        mAdapter.setOnItemChildClickListener { _, view, position ->
             if (view.id == R.id.ivCollect) {
                 viewModel.unCollect(mAdapter.data[position].id ?: "")
                 mAdapter.cancelCollect(position)
