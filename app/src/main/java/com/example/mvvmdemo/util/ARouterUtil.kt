@@ -81,4 +81,9 @@ object ARouterUtil {
             .navigation()
     }
 
+    fun jumpPagin3() {
+        ARouter.getInstance().build(RouterActivityPath.Paging3.Paging3Ac)
+            .navigation()
+    }
+
 }

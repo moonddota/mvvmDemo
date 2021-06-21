@@ -67,4 +67,8 @@ class RouterActivityPath {
         const val LoginAc = "/module_login/Login"
     }
 
+    object Paging3 {
+        const val Paging3Ac = "/Paging3/Ac"
+    }
+
 }

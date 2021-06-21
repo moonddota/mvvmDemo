@@ -1,5 +1,6 @@
 package com.example.mvvmdemo.network.api
 
+import com.example.mvvmdemo.Paging3.RepoResponse
 import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.*
 import com.example.mvvmdemo.network.BaseData
@@ -84,7 +85,10 @@ class RequestService {
         password: String,
         repassword: String
     ): BaseData<UserInfo> =
-        requestService.register(username, password,repassword)
+        requestService.register(username, password, repassword)
+
+    suspend fun searchRepos(page: Int, perPage: Int): RepoResponse =
+        requestService.searchRepos(page, perPage)
 
 
 }

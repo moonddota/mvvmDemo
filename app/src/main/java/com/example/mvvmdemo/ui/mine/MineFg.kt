@@ -35,6 +35,7 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
         binding.llShare.setOnClickListener { checkLogin { ARouterUtil.jumpMyShareAc() } }
         binding.llProjects.setOnClickListener { ARouterUtil.jumpOpenSourceAc() }
         binding.llAbout.setOnClickListener { toast("谢谢使用") }
+        binding.llpagin3.setOnClickListener { ARouterUtil.jumpPagin3() }
     }
 
     override fun initData() {

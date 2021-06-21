@@ -1,5 +1,6 @@
 package com.example.mvvmdemo.network.api
 
+import com.example.mvvmdemo.Paging3.RepoResponse
 import com.example.mvvmdemo.base.TreeListRes
 import com.example.mvvmdemo.bean.*
 import com.example.mvvmdemo.network.BaseData
@@ -165,6 +166,12 @@ interface RequestServiceRegister {
         @Field("password") password: String,
         @Field("repassword") repassword: String
     ): BaseData<UserInfo>
+
+    /**
+     *  githyb 查找项目接口
+     */
+    @GET("https://api.github.com/search/repositories?sort=stars&q=Android")
+    suspend fun searchRepos(@Query("page") page: Int, @Query("per_page") perPage: Int): RepoResponse
 
 
 }

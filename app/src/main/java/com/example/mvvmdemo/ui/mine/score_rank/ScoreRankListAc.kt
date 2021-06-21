@@ -1,7 +1,6 @@
 package com.example.mvvmdemo.ui.mine.score_rank
 
 import android.text.TextUtils
-import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager

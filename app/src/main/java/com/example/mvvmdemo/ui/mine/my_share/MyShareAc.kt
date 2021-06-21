@@ -1,4 +1,4 @@
-package com.example.mvvmdemo.ui.mine.my_share
+package com.example.mvvmdemo.ui.mine.my_viewLifecycleOwnershare
 
 import android.graphics.Color
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import com.example.mvvmdemo.base.BaseViewModelActivity
 import com.example.mvvmdemo.bean.PageImpl
 import com.example.mvvmdemo.constant.RouterActivityPath
 import com.example.mvvmdemo.databinding.MyShareActivityBinding
+import com.example.mvvmdemo.ui.mine.my_share.MyShareVM
 import com.example.mvvmdemo.ui.square.RvAdapterArticleList
 import com.example.mvvmdemo.util.ARouterUtil
 import com.example.mvvmdemo.widget.CustomItemDecoration

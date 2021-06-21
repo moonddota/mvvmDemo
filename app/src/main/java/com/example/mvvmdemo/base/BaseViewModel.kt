@@ -1,6 +1,7 @@
 package com.example.mvvmdemo.base
 
 import androidx.lifecycle.*
+import com.example.mvvmdemo.util.toast
 import kotlinx.coroutines.*
 
 open class BaseViewModel : ViewModel(), LifecycleObserver {
@@ -19,6 +20,27 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
             } catch (e: Exception) {
                 e.printStackTrace()
                 onError(e)
+                error.value = e
+            }
+        }
+    }
+
+
+    fun <T> launch(
+        mLiveD: MutableLiveData<T>? = null,
+        onError: (e: Exception) -> Unit? = {},
+        IoBlock: suspend CoroutineScope.() -> T?,
+        UiBlock: () -> Unit = {}
+    ) {
+        viewModelScope.launch {
+            try {
+                val value = withContext(Dispatchers.IO) { IoBlock() }
+                mLiveD?.value = value
+                UiBlock()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                onError(e)
+                toast(e.message ?: "")
                 error.value = e
             }
         }

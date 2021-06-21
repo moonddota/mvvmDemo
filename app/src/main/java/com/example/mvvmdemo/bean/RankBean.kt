@@ -1,5 +1,7 @@
 package com.example.mvvmdemo.bean
 
+import com.example.mvvmdemo.Paging3.DifferData
+
 data class RankBean(
     var coinCount: String? = null,
 
@@ -22,5 +24,5 @@ data class RankBean(
     val rank: String? = null,
 
     val level: Int? = null
-) {
+) : DifferData {
 }
