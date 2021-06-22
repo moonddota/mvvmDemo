@@ -9,10 +9,6 @@
         layout="@layout/top_bar" />
 
     <include
-        android:id="@+id/head"
-        layout="@layout/rv_item_my_score_header" />
-
-    <include
         android:id="@+id/aaa"
         layout="@layout/simple_refresh_layout" />
 
