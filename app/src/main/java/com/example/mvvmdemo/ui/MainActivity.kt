@@ -22,7 +22,6 @@ import com.example.mvvmdemo.util.toast
 import com.example.mvvmdemo.widget.bubblenavigation.listener.BubbleNavigationChangeListener
 import com.permissionx.guolindev.PermissionX
 
-
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
 class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>(),
     BubbleNavigationChangeListener {

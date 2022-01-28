@@ -71,4 +71,9 @@ class RouterActivityPath {
         const val Paging3Ac = "/Paging3/Ac"
     }
 
+    object Camera_1{
+        const val Camera_1 = "/Camera1"
+        const val Ac = "${Camera_1}/AC"
+    }
+
 }
