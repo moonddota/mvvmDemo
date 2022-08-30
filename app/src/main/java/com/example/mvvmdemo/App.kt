@@ -10,6 +10,7 @@ import kotlin.properties.Delegates
 
 @HiltAndroidApp
 class App : Application() {
+
     companion object {
         @JvmStatic
         var instance: App by Delegates.notNull()
