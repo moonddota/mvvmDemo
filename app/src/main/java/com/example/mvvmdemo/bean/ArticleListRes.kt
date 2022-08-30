@@ -2,6 +2,7 @@ package com.example.mvvmdemo.bean
 
 import android.text.TextUtils
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.example.mvvmdemo.Paging3.DifferData
 import com.example.mvvmdemo.constant.C
 
 data class ArticleListRes(
@@ -56,7 +57,7 @@ data class ArticleBean(
     var visible: Int? = null,
     var zan: Int? = null,
     var tags: List<*>? = null
-) : MultiItemEntity {
+) : MultiItemEntity, DifferData {
 
     override val itemType: Int
         get() = if (TextUtils.isEmpty(envelopePic)) {

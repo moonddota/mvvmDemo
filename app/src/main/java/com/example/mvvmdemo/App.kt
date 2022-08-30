@@ -5,11 +5,11 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.Utils
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.tencent.mmkv.MMKV
+import dagger.hilt.android.HiltAndroidApp
 import kotlin.properties.Delegates
 
-
+@HiltAndroidApp
 class App : Application() {
-
     companion object {
         @JvmStatic
         var instance: App by Delegates.notNull()

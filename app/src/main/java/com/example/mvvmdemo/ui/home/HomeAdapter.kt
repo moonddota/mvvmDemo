@@ -30,8 +30,7 @@ class HomeAdapter : BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.rv_it
             String.format("%s·%s", item.superChapterName, item.chapterName)
         )
         holder.setText(R.id.tvTime, item.niceDate)
-        holder.setGone(R.id.tvRefresh, !(item.fresh ?: false))
-        holder.setVisible(R.id.top, holder.layoutPosition == 0)
+        holder.setVisible(R.id.top, holder.layoutPosition != 0)
         holder.getView<ShineButton>(R.id.ivCollect).apply {
             isChecked = item.collect ?: false
         }

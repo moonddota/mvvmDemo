@@ -51,6 +51,7 @@
         <activity android:name=".ui.mine.open_source.OpenSourceAc"/>
         <activity android:name=".ui.login.LoginAc"/>
         <activity android:name=".Paging3.Paging3Ac"/>
+        <activity android:name=".ui.camera1.Camera1Ac"/>
 
 
     </application>

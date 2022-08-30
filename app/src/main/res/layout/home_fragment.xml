@@ -5,153 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.classic.common.MultipleStatusView
-        android:id="@+id/status_view"
+    <LinearLayout
+        android:id="@+id/topbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:emptyView="@layout/custom_empty_view"
-        app:errorView="@layout/custom_error_view"
-        app:loadingView="@layout/custom_loading_view"
-        app:noNetworkView="@layout/custom_no_network_view">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <com.scwang.smart.refresh.layout.SmartRefreshLayout
-                android:id="@+id/refreshLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipChildren="false"
-                app:srlAccentColor="@android:color/white">
-
-                <com.scwang.smart.refresh.header.TwoLevelHeader
-                    android:id="@+id/header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/second_floor"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#cfd8dc"
-                        android:gravity="center_horizontal"
-                        android:paddingTop="100dp"
-                        android:text="恭喜发现彩蛋!"
-                        android:textColor="#333333"
-                        android:textSize="30sp" />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/image_second_floor"
-                        android:visibility="gone" />
-
-                    <FrameLayout
-                        android:id="@+id/second_floor_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:alpha="0"
-                        android:background="@color/white">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/app_name"
-                            android:scaleType="centerCrop"
-                            android:src="@mipmap/image_second_floor_content"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="#cfd8dc"
-                            android:drawableTop="@mipmap/ic_launcher_round"
-                            android:gravity="center_horizontal"
-                            android:paddingTop="100dp"
-                            android:text="作者微信"
-                            android:textColor="#333333"
-                            android:textSize="30sp" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                        </RelativeLayout>
-
-                    </FrameLayout>
-
-                    <com.scwang.smart.refresh.header.ClassicsHeader
-                        android:id="@+id/classics"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="?attr/actionBarSize" />
-                </com.scwang.smart.refresh.header.TwoLevelHeader>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="36dp"
-                    android:background="@color/white"
-                    android:nestedScrollingEnabled="false" />
-
-                <com.scwang.smart.refresh.footer.ClassicsFooter
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srlPrimaryColor="@android:color/white" />
-            </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
-
-            <LinearLayout
-                android:id="@+id/topbar"
+            <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent">
+                android:drawablePadding="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/app_name"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <include layout="@layout/statusview" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="10dp"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:text="@string/app_name"
-                        android:textColor="@color/text_color"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/ivSearch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ripple_bg"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_search"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
-                        app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-                        app:layout_constraintTop_toTopOf="@+id/tvTitle" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-
-
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_bg"
+                android:padding="10dp"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+                app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+                app:layout_constraintTop_toTopOf="@+id/tvTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <include
+            android:id="@+id/headView"
+            layout="@layout/home_headerview" />
 
-    </com.classic.common.MultipleStatusView>
+    </LinearLayout>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbar">
+
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc"
+            android:background="@color/FFBFBFBF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false" />
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

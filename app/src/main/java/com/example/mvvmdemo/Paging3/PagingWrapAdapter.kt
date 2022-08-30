@@ -29,7 +29,7 @@ class PagingWrapAdapter<T : DifferData, VH : RecyclerView.ViewHolder>(
     }
 
     //重试
-    fun retry(){
+    fun retry() {
         differ.retry()
     }
 

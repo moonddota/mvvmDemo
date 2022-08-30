@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.example.mvvmdemo.App
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.bean.ArticleBean
 import com.example.mvvmdemo.util.ARouterUtil
@@ -21,7 +22,7 @@ import java.lang.String
 class ProgectAdapter : BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.rv_item_progect),
     OnItemChildClickListener {
 
-    private val glide by lazy { Glide.with(context) }
+    private val glide by lazy { Glide.with(App.instance) }
     private val options by lazy { RequestOptions.bitmapTransform(RoundedCorners(dp2px(5f))) }
 
     init {

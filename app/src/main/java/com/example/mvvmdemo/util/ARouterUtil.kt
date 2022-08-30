@@ -86,4 +86,9 @@ object ARouterUtil {
             .navigation()
     }
 
+    fun jumpCamera1() {
+        ARouter.getInstance().build(RouterActivityPath.Camera_1.Ac)
+            .navigation()
+    }
+
 }

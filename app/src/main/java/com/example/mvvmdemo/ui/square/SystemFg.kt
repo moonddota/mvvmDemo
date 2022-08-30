@@ -35,7 +35,7 @@ class SystemFg(val tag: Int) : BaseViewModelFragment<SystemVM, SystemFragmentBin
             SYSTEM_TAG -> viewModel.listTrees()
             NAVIGATION_TAG -> viewModel.listNavis()
         }
-        viewModel.data.observe(viewLifecycleOwner, { list ->
+        viewModel.data.observe(viewLifecycleOwner) { list ->
             binding.indicatorView.removeAllViews()
             binding.llParent.removeAllViews()
             list.forEachIndexed { i, it ->
@@ -53,8 +53,8 @@ class SystemFg(val tag: Int) : BaseViewModelFragment<SystemVM, SystemFragmentBin
                         textView.text = child.name ?: ""
                         textView.setOnClickListener { v: View? ->
                             ARouterUtil.jumpArticleList(
-                                child.id?:"",
-                                child.name?:""
+                                child.id ?: "",
+                                child.name ?: ""
                             )
                         }
                         flexboxLayout.addView(textView)
@@ -65,7 +65,7 @@ class SystemFg(val tag: Int) : BaseViewModelFragment<SystemVM, SystemFragmentBin
                         val textView = findLabel(flexboxLayout)
                         textView.text = article.title ?: ""
                         textView.setOnClickListener { v: View? ->
-                            ARouterUtil.jumpWeb( article.link?:"")
+                            ARouterUtil.jumpWeb(article.link ?: "")
                         }
                         flexboxLayout.addView(textView)
                     }
@@ -80,7 +80,7 @@ class SystemFg(val tag: Int) : BaseViewModelFragment<SystemVM, SystemFragmentBin
 
             }
 
-        })
+        }
     }
 
     private fun initColors() {

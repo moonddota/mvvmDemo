@@ -2,26 +2,23 @@ package com.example.mvvmdemo.ui.home
 
 import android.graphics.Color
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils.dp2px
-import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.example.mvvmdemo.Paging3.PagingWrapAdapter
 import com.example.mvvmdemo.R
 import com.example.mvvmdemo.base.BaseViewModelFragment
 import com.example.mvvmdemo.bean.ArticleBean
 import com.example.mvvmdemo.bean.BannerRes
 import com.example.mvvmdemo.databinding.HomeFragmentBinding
 import com.example.mvvmdemo.util.ARouterUtil
-import com.scwang.smart.refresh.layout.api.RefreshHeader
-import com.scwang.smart.refresh.layout.api.RefreshLayout
-import com.scwang.smart.refresh.layout.constant.RefreshState
-import com.scwang.smart.refresh.layout.simple.SimpleMultiListener
-import com.to.aboomy.pager2banner.Banner
 import com.to.aboomy.pager2banner.IndicatorView
 import com.to.aboomy.pager2banner.ScaleInTransformer
-import java.lang.String
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
 
@@ -29,7 +26,14 @@ class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
 
     private val glide by lazy { Glide.with(requireContext()) }
 
-    private val mAdapter by lazy { HomeAdapter() }
+    private val homeAdapter by lazy { HomeAdapter() }
+    private val mAdapter by lazy {
+        PagingWrapAdapter<ArticleBean, BaseViewHolder>(homeAdapter) {
+            homeAdapter.setList(it)
+        }
+    }
+
+
     private lateinit var bannerAdapter: BaseQuickAdapter<BannerRes, BaseViewHolder>
 
     override fun immersionBar(): Boolean = true
@@ -37,31 +41,31 @@ class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
     override fun providerVMClass(): Class<HomeFgViewModel> = HomeFgViewModel::class.java
 
     override fun initView() {
+        initHeader()
         initAdapter()
-
-        binding.statusView.showLoading()
-        viewModel.getBanner()
-        getList(false)
     }
 
     override fun initData() {
+        viewModel.getBanner()
+        viewModel.listArticle()
         viewModel.run {
             bannerList.observe(viewLifecycleOwner, {
-                binding.statusView.showContent()
                 bannerAdapter.setList(it)
             })
             listData.observe(viewLifecycleOwner, {
-                if (it.second) {
-                    mAdapter.addData(it.first?.datas ?: mutableListOf())
-                } else {
-                    mAdapter.setList(it.first?.datas ?: mutableListOf())
+                lifecycleScope.launch {
+                    it.collect { pagingData ->
+                        mAdapter.submitList(pagingData)
+                    }
                 }
+                binding.refreshLayout.finishRefresh()
+                binding.refreshLayout.finishLoadMore()
             })
         }
     }
 
     private fun initAdapter() {
-        mAdapter.setOnArticleCollect(object : HomeAdapter.OnArticleCollect {
+        homeAdapter.setOnArticleCollect(object : HomeAdapter.OnArticleCollect {
             override fun onCollect(item: ArticleBean) {
                 if (item.collect == true) {
                     viewModel.unCollect(item.id ?: "")
@@ -72,48 +76,10 @@ class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
         })
         binding.rc.layoutManager = LinearLayoutManager(requireContext())
         binding.rc.adapter = mAdapter
-        initHeader()
-        binding.refreshLayout.setOnMultiListener(object : SimpleMultiListener() {
-            override fun onLoadMore(refreshLayout: RefreshLayout) {
-                getList(true)
-            }
-
-            override fun onRefresh(refreshLayout: RefreshLayout) {
-                getList(false)
-            }
-
-            override fun onHeaderMoving(
-                header: RefreshHeader?,
-                isDragging: Boolean,
-                percent: Float,
-                offset: Int,
-                headerHeight: Int,
-                maxDragHeight: Int
-            ) {
-                binding.topbar.alpha = 1 - Math.min(percent, 1f)
-                binding.secondFloor.translationY = Math.min(
-                    offset - binding.secondFloor.height + binding.topbar.height,
-                    binding.refreshLayout.layout
-                        .height - binding.secondFloor.height
-                ).toFloat()
-            }
-
-            override fun onStateChanged(
-                refreshLayout: RefreshLayout,
-                oldState: RefreshState,
-                newState: RefreshState
-            ) {
-                if (oldState == RefreshState.TwoLevel) {
-                    binding.secondFloorContent.animate().alpha(0f).setDuration(1000)
-                }
-            }
-        })
-
-        binding.header.setOnTwoLevelListener {
-            LogUtils.e("触发二楼事件")
-            binding.secondFloorContent.animate().alpha(1f).setDuration(2000)
-            true //true 将会展开二楼状态 false 关闭刷新
+        binding.refreshLayout.setOnRefreshListener {
+            viewModel.listArticle()
         }
+
     }
 
     private fun initHeader() {
@@ -129,8 +95,7 @@ class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
                     }
                 }
             }
-        val headView = layoutInflater.inflate(R.layout.home_headerview, null, false)
-        val banner = headView.findViewById<Banner>(R.id.banner)
+        val banner = binding.headView.banner
         banner.setIndicator(IndicatorView(context).apply {
             setIndicatorColor(Color.DKGRAY)
             setIndicatorSelectorColor(Color.WHITE)
@@ -141,15 +106,6 @@ class HomeFg : BaseViewModelFragment<HomeFgViewModel, HomeFragmentBinding>() {
         banner.setPageMargin(dp2px(20f), dp2px(10f))
         //内置ScaleInTransformer，设置切换缩放动画
         banner.addPageTransformer(ScaleInTransformer())
-
-        mAdapter.addHeaderView(headView)
-    }
-
-    private fun getList(isLoadMore: Boolean) {
-        binding.refreshLayout.finishRefresh()
-        binding.refreshLayout.finishLoadMore()
-        page = if (isLoadMore) page + 1 else 0
-        viewModel.listArticle(page, isLoadMore)
     }
 
 }

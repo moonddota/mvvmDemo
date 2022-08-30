@@ -27,7 +27,7 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
             binding.llHead.layoutParams = layoutParams
         }
 
-        binding.ivAvatar.setOnClickListener {  ARouterUtil.jumpLogin() }
+        binding.ivAvatar.setOnClickListener { ARouterUtil.jumpLogin() }
         binding.ivSet.setOnClickListener { checkLogin { ARouterUtil.jumpSetting() } }
         binding.tvScoreRankList.setOnClickListener { checkLogin { ARouterUtil.jumpScoreRankListAc() } }
         binding.llScore.setOnClickListener { checkLogin { ARouterUtil.jumpMyScoreAc() } }
@@ -36,6 +36,7 @@ class MineFg : BaseViewModelFragment<MineVM, MineFragmentBinding>() {
         binding.llProjects.setOnClickListener { ARouterUtil.jumpOpenSourceAc() }
         binding.llAbout.setOnClickListener { toast("谢谢使用") }
         binding.llpagin3.setOnClickListener { ARouterUtil.jumpPagin3() }
+        binding.llCamera1.setOnClickListener { ARouterUtil.jumpCamera1() }
     }
 
     override fun initData() {
